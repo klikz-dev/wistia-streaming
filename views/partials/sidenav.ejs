@@ -1,0 +1,65 @@
+<div id="sidenav-wrap" class="fixed-top fixed-bottom overflow-y-scroll bg-white shadow pb-5">
+  <div class="d-flex p-2">
+    <button id="sidenav-close" type="button" class="btn btn-light ms-auto">
+      <i class="bi bi-x-lg fs-5"></i>
+    </button>
+  </div>
+
+  <ul class="list-group">
+    <% Object.keys(categories).forEach(key => { %>
+    <a class="list-group-item list-group-item-action" href="/category/<%= key %>">
+      <%= categories[key].name %>
+    </a>
+    <% }) %>
+  </ul>
+</div>
+
+<div id="sidenav-trigger">
+  <button type="button" class="btn btn-secondary shadow">
+    <i class="bi bi-list fs-5 mr-2"></i>
+    <span>Browse Videos</span>
+  </button>
+</div>
+
+<style>
+  #sidenav-trigger {
+    position: fixed;
+    left: -180px;
+    top: calc(50vh - 120px);
+    z-index: 9;
+  }
+
+  #sidenav-trigger.hide {
+    display: none;
+  }
+
+  #sidenav-trigger .btn {
+    transform: rotate(270deg);
+    transform-origin: top right;
+    width: 180px;
+    height: 40px;
+  }
+
+  #sidenav-wrap {
+    top: 40px;
+    width: 0;
+  }
+
+  #sidenav-wrap.active {
+    width: 300px;
+  }
+</style>
+
+<script>
+  $('#sidenav-trigger').click(e => {
+    e.preventDefault()
+    $('#sidenav-trigger').addClass('hide')
+    $('#sidenav-wrap').addClass('active')
+  })
+
+  $('#sidenav-close').click(e => {
+    e.preventDefault()
+    $('#sidenav-trigger').removeClass('hide')
+    $('#sidenav-wrap').removeClass('active')
+  })
+</script>

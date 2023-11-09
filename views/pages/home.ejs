@@ -1,0 +1,9 @@
+<%- include('../components/hero-carousel'); %>
+
+<div class="container">
+  <% carouselItems.forEach(carousel => { %>
+  <div class="carousel-section my-5">
+    <%- include('../components/project-carousel', {...carousel}); %>
+  </div>
+  <% }) %>
+</div>

@@ -1,0 +1,76 @@
+<div id="project-carousel-<%= slug %>" class="carousel slide project-carousel">
+  <div class="d-flex justify-content-between items-align-center mb-1 px-5">
+    <div>
+      <h5><%= title %></h5>
+    </div>
+    <div class="text-end">
+      <small>
+        <span class="page">1</span>
+        <span> of </span>
+        <span><%= videosGroup.length %></span>
+      </small>
+    </div>
+  </div>
+
+  <div class="carousel-inner px-5">
+    <% videosGroup.forEach((videos, index) => { %>
+    <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-index="<%= index %>">
+      <div class="row">
+        <% for( let i = 0; i < 3; i += 1 ) { %>
+        <div class="col">
+          <% if (videos[i]) { %>
+          <a
+            href="/category/<%= slug %>/<%= videos[i].id %>"
+            class="link-underline link-underline-opacity-0 hover:link-underline-opacity-100"
+          >
+            <img
+              src="<%= videos[i].thumbnail?.url %>"
+              class="d-block w-100 mb-2"
+              alt="<%= videos[i].name %>"
+            />
+            <p class="mb-4"><%= videos[i].name?.split('_')?.[0] %></p>
+          </a>
+          <% } %>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#project-carousel-<%= slug %>"
+    data-bs-slide="prev"
+  >
+    <i class="bi bi-chevron-left fs-4"></i>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#project-carousel-<%= slug %>"
+    data-bs-slide="next"
+  >
+    <i class="bi bi-chevron-right fs-4"></i>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<script>
+  $('#project-carousel-<%= slug %>').on('slid.bs.carousel', event => {
+    const activeItem = $(event.relatedTarget)
+    const index = activeItem.data('index')
+    $('#project-carousel-<%= slug %> .page').text(index + 1)
+  })
+</script>
+
+<style>
+  .project-carousel .carousel-control-prev,
+  .project-carousel .carousel-control-next {
+    width: 32px;
+    color: black;
+  }
+</style>

@@ -1,0 +1,15 @@
+<h3 class="my-4">View all <%= name %></h3>
+
+<div class="row">
+  <% videos.forEach(video => { %>
+  <div class="p-3 col-12 col-md-6 col-lg-3 mb-2">
+    <a
+      href="/category/<%= slug %>/<%= video.id %>"
+      class="link-underline link-underline-opacity-0 hover:link-underline-opacity-100"
+    >
+      <img src="<%= video.thumbnail?.url %>" class="d-block w-100 mb-2" alt="<%= video.name %>" />
+      <p class="mb-4"><%= video.name?.split('_')?.[0] %></p>
+    </a>
+  </div>
+  <% }) %>
+</div>

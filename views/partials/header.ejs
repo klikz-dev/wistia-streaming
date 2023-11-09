@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg bg-dark-subtle py-0">
+  <div class="container">
+    <p class="mb-0"><small>LEARN. TEACH. LEAD.</small></p>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="https://ascd.org" target="_blank">
+            <small>ASCD.org</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="https://shop.ascd.org" target="_blank">
+            <small>Shop</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="https://pdo.ascd.org" target="_blank">
+            <small>PD Online</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="https://myteachsource.ascd.org"
+            target="_blank"
+          >
+            <small>myTeachSource</small>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary py-0">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo.png" alt="ASCD Streaming Video" />
+    </a>
+
+    <ul class="navbar-nav mb-2 mb-lg-0">
+      <% if (user && user.profile) { %>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <%= user.profile.firstName %> <%= user.profile.lastName %>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/account/videos">My Videos</a></li>
+          <li><a class="dropdown-item" href="/signout">Log Out</a></li>
+        </ul>
+      </li>
+      <% } else { %>
+      <li class="nav-item">
+        <a href="/login" class="btn btn-success">Login</a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
